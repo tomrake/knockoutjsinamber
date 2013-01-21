@@ -8,7 +8,8 @@ selector: "isLoaded",
 fn: function (){
 var self=this;
 var $1;
-$1=smalltalk.send(smalltalk.send(ko,"_isNil",[]),"_not",[]);
+$1=typeof(ko) !== 'undefined';
+;
 return $1;
 }
 }),

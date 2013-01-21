@@ -9,12 +9,13 @@ category: 'not yet classified',
 fn: function (){
 var self=this;
 var $1;
-$1=smalltalk.send(smalltalk.send(ko,"_isNil",[]),"_not",[]);
+$1=typeof(ko) !== 'undefined';
+;
 return $1;
 },
 args: [],
-source: "isLoaded\x0a\x09^ko isNil not",
-messageSends: ["not", "isNil"],
+source: "isLoaded\x0a\x22Test that the google.load() function is defined\x22\x0a^<typeof(ko) !== 'undefined'>",
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Knockout.klass);

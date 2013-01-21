@@ -6,7 +6,8 @@ Object subclass: #Knockout
 !Knockout class methodsFor: 'not yet classified'!
 
 isLoaded
-	^ko isNil not
+"Test that the google.load() function is defined"
+^<typeof(ko) !!== 'undefined'>
 !
 
 load: callback
