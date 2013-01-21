@@ -15,6 +15,14 @@ load: callback
     self isLoaded 
     	ifTrue:[callback value]
 		ifFalse:[
-            <$.ajax({url:"http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js",datatype:"script",success:callback});>]
+            <
+              var script = document.createElement("script");
+  script.src = "http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js";
+  script.type = "text/javascript";
+  document.getElementsByTagName("head")[0].appendChild(script);
+            >.
+            "Should spin here  (self isLoaded) whileFalse:[self sleep]"
+            callback value
+]
 ! !
 
