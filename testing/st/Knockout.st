@@ -17,6 +17,36 @@ load: callback
 		ifFalse: [<$.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);>]
 ! !
 
+Widget subclass: #KnockoutExample
+	instanceVariableNames: ''
+	package: 'Knockout'!
+
+!KnockoutExample methodsFor: 'not yet classified'!
+
+renderOn: html
+	| workspace |
+	workspace := SourceArea new.
+	html div class: 'section center'; with: [
+		html h1 with: 'Give Jtalk a try!!'.
+		workspace renderOn: html.
+		html div with: [
+			html button
+				with: 'DoIt';
+				onClick: [workspace doIt].
+			html button
+				with: 'PrintIt';
+				onClick: [workspace printIt].
+			html button
+				with: 'InspectIt';
+				onClick: [workspace inspectIt]]]
+! !
+
+!KnockoutExample class methodsFor: 'not yet classified'!
+
+begin
+	self new appendToJQuery: 'body' asJQuery
+! !
+
 Object subclass: #ScriptLoader
 	instanceVariableNames: ''
 	package: 'Knockout'!

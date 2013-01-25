@@ -33,6 +33,59 @@ return self}
 smalltalk.Knockout.klass);
 
 
+smalltalk.addClass('KnockoutExample', smalltalk.Widget, [], 'Knockout');
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html){
+var self=this;
+var $1,$3,$4,$5,$6,$7,$8,$2;
+var workspace;
+workspace=smalltalk.send((smalltalk.SourceArea || SourceArea),"_new",[]);
+$1=smalltalk.send(html,"_div",[]);
+smalltalk.send($1,"_class_",["section center"]);
+$2=smalltalk.send($1,"_with_",[(function(){
+smalltalk.send(smalltalk.send(html,"_h1",[]),"_with_",["Give Jtalk a try!"]);
+smalltalk.send(workspace,"_renderOn_",[html]);
+return smalltalk.send(smalltalk.send(html,"_div",[]),"_with_",[(function(){
+$3=smalltalk.send(html,"_button",[]);
+smalltalk.send($3,"_with_",["DoIt"]);
+$4=smalltalk.send($3,"_onClick_",[(function(){
+return smalltalk.send(workspace,"_doIt",[]);
+})]);
+$4;
+$5=smalltalk.send(html,"_button",[]);
+smalltalk.send($5,"_with_",["PrintIt"]);
+$6=smalltalk.send($5,"_onClick_",[(function(){
+return smalltalk.send(workspace,"_printIt",[]);
+})]);
+$6;
+$7=smalltalk.send(html,"_button",[]);
+smalltalk.send($7,"_with_",["InspectIt"]);
+$8=smalltalk.send($7,"_onClick_",[(function(){
+return smalltalk.send(workspace,"_inspectIt",[]);
+})]);
+return $8;
+})]);
+})]);
+return self}
+}),
+smalltalk.KnockoutExample);
+
+
+smalltalk.addMethod(
+"_begin",
+smalltalk.method({
+selector: "begin",
+fn: function (){
+var self=this;
+smalltalk.send(smalltalk.send(self,"_new",[]),"_appendToJQuery_",[smalltalk.send("body","_asJQuery",[])]);
+return self}
+}),
+smalltalk.KnockoutExample.klass);
+
+
 smalltalk.addClass('ScriptLoader', smalltalk.Object, [], 'Knockout');
 
 smalltalk.addMethod(

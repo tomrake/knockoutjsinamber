@@ -43,6 +43,69 @@ referencedClasses: []
 smalltalk.Knockout.klass);
 
 
+smalltalk.addClass('KnockoutExample', smalltalk.Widget, [], 'Knockout');
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'not yet classified',
+fn: function (html){
+var self=this;
+var $1,$3,$4,$5,$6,$7,$8,$2;
+var workspace;
+workspace=smalltalk.send((smalltalk.SourceArea || SourceArea),"_new",[]);
+$1=smalltalk.send(html,"_div",[]);
+smalltalk.send($1,"_class_",["section center"]);
+$2=smalltalk.send($1,"_with_",[(function(){
+smalltalk.send(smalltalk.send(html,"_h1",[]),"_with_",["Give Jtalk a try!"]);
+smalltalk.send(workspace,"_renderOn_",[html]);
+return smalltalk.send(smalltalk.send(html,"_div",[]),"_with_",[(function(){
+$3=smalltalk.send(html,"_button",[]);
+smalltalk.send($3,"_with_",["DoIt"]);
+$4=smalltalk.send($3,"_onClick_",[(function(){
+return smalltalk.send(workspace,"_doIt",[]);
+})]);
+$4;
+$5=smalltalk.send(html,"_button",[]);
+smalltalk.send($5,"_with_",["PrintIt"]);
+$6=smalltalk.send($5,"_onClick_",[(function(){
+return smalltalk.send(workspace,"_printIt",[]);
+})]);
+$6;
+$7=smalltalk.send(html,"_button",[]);
+smalltalk.send($7,"_with_",["InspectIt"]);
+$8=smalltalk.send($7,"_onClick_",[(function(){
+return smalltalk.send(workspace,"_inspectIt",[]);
+})]);
+return $8;
+})]);
+})]);
+return self},
+args: ["html"],
+source: "renderOn: html\x0a\x09| workspace |\x0a\x09workspace := SourceArea new.\x0a\x09html div class: 'section center'; with: [\x0a\x09\x09html h1 with: 'Give Jtalk a try!'.\x0a\x09\x09workspace renderOn: html.\x0a\x09\x09html div with: [\x0a\x09\x09\x09html button\x0a\x09\x09\x09\x09with: 'DoIt';\x0a\x09\x09\x09\x09onClick: [workspace doIt].\x0a\x09\x09\x09html button\x0a\x09\x09\x09\x09with: 'PrintIt';\x0a\x09\x09\x09\x09onClick: [workspace printIt].\x0a\x09\x09\x09html button\x0a\x09\x09\x09\x09with: 'InspectIt';\x0a\x09\x09\x09\x09onClick: [workspace inspectIt]]]",
+messageSends: ["new", "class:", "div", "with:", "h1", "renderOn:", "button", "onClick:", "doIt", "printIt", "inspectIt"],
+referencedClasses: ["SourceArea"]
+}),
+smalltalk.KnockoutExample);
+
+
+smalltalk.addMethod(
+"_begin",
+smalltalk.method({
+selector: "begin",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+smalltalk.send(smalltalk.send(self,"_new",[]),"_appendToJQuery_",[smalltalk.send("body","_asJQuery",[])]);
+return self},
+args: [],
+source: "begin\x0a\x09self new appendToJQuery: 'body' asJQuery",
+messageSends: ["appendToJQuery:", "asJQuery", "new"],
+referencedClasses: []
+}),
+smalltalk.KnockoutExample.klass);
+
+
 smalltalk.addClass('ScriptLoader', smalltalk.Object, [], 'Knockout');
 
 smalltalk.addMethod(
