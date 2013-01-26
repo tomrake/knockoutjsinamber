@@ -51,40 +51,28 @@ selector: "renderOn:",
 category: 'not yet classified',
 fn: function (html){
 var self=this;
-var $1,$3,$4,$5,$6,$7,$8,$2;
-var workspace;
-workspace=smalltalk.send((smalltalk.SourceArea || SourceArea),"_new",[]);
-$1=smalltalk.send(html,"_div",[]);
-smalltalk.send($1,"_class_",["section center"]);
-$2=smalltalk.send($1,"_with_",[(function(){
-smalltalk.send(smalltalk.send(html,"_h1",[]),"_with_",["Give Jtalk a try!"]);
-smalltalk.send(workspace,"_renderOn_",[html]);
-return smalltalk.send(smalltalk.send(html,"_div",[]),"_with_",[(function(){
-$3=smalltalk.send(html,"_button",[]);
-smalltalk.send($3,"_with_",["DoIt"]);
-$4=smalltalk.send($3,"_onClick_",[(function(){
-return smalltalk.send(workspace,"_doIt",[]);
+smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
+"First Name: ";
+return smalltalk.send(smalltalk.send(html,"_strong",[]),"_at_put_",["data-bind","text: firstName"]);
 })]);
-$4;
-$5=smalltalk.send(html,"_button",[]);
-smalltalk.send($5,"_with_",["PrintIt"]);
-$6=smalltalk.send($5,"_onClick_",[(function(){
-return smalltalk.send(workspace,"_printIt",[]);
+smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
+"Last Name: ";
+return smalltalk.send(smalltalk.send(html,"_strong",[]),"_at_put_",["data-bind","text: lastName"]);
 })]);
-$6;
-$7=smalltalk.send(html,"_button",[]);
-smalltalk.send($7,"_with_",["InspectIt"]);
-$8=smalltalk.send($7,"_onClick_",[(function(){
-return smalltalk.send(workspace,"_inspectIt",[]);
+smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
+"First Name: ";
+return smalltalk.send(smalltalk.send(html,"_input",[]),"_at_put_",["data-bind","text: firstName"]);
 })]);
-return $8;
+smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
+"Last Name: ";
+return smalltalk.send(smalltalk.send(html,"_input",[]),"_at_put_",["data-bind","text: lastName"]);
 })]);
-})]);
+smalltalk.send(smalltalk.send(html,"_button",[]),"_at_put_with_",["data-bind","click: capitalizeLastName","Go Caps"]);
 return self},
 args: ["html"],
-source: "renderOn: html\x0a\x09| workspace |\x0a\x09workspace := SourceArea new.\x0a\x09html div class: 'section center'; with: [\x0a\x09\x09html h1 with: 'Give Jtalk a try!'.\x0a\x09\x09workspace renderOn: html.\x0a\x09\x09html div with: [\x0a\x09\x09\x09html button\x0a\x09\x09\x09\x09with: 'DoIt';\x0a\x09\x09\x09\x09onClick: [workspace doIt].\x0a\x09\x09\x09html button\x0a\x09\x09\x09\x09with: 'PrintIt';\x0a\x09\x09\x09\x09onClick: [workspace printIt].\x0a\x09\x09\x09html button\x0a\x09\x09\x09\x09with: 'InspectIt';\x0a\x09\x09\x09\x09onClick: [workspace inspectIt]]]",
-messageSends: ["new", "class:", "div", "with:", "h1", "renderOn:", "button", "onClick:", "doIt", "printIt", "inspectIt"],
-referencedClasses: ["SourceArea"]
+source: "renderOn: html\x0a\x09html p\x0a    \x09with: ['First Name: '.\x0a        \x09     html strong\x0a                 \x09at: 'data-bind' put: 'text: firstName'].\x0a    html p\x0a    \x09with: ['Last Name: '.\x0a        \x09     html strong\x0a                 \x09at: 'data-bind' put: 'text: lastName'].\x0a\x09html p\x0a    \x09with: ['First Name: '.\x0a        \x09     html input\x0a                 \x09at: 'data-bind' put: 'text: firstName'].\x0a    html p\x0a    \x09with: ['Last Name: '.\x0a        \x09     html input\x0a                 \x09at: 'data-bind' put: 'text: lastName'].\x0a    html button\x0a    \x09at: 'data-bind' put: 'click: capitalizeLastName'\x0a    \x09with:  'Go Caps'\x0a\x0a        \x09   ",
+messageSends: ["with:", "at:put:", "strong", "p", "input", "at:put:with:", "button"],
+referencedClasses: []
 }),
 smalltalk.KnockoutExample);
 

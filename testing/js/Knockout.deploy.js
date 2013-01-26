@@ -40,35 +40,23 @@ smalltalk.method({
 selector: "renderOn:",
 fn: function (html){
 var self=this;
-var $1,$3,$4,$5,$6,$7,$8,$2;
-var workspace;
-workspace=smalltalk.send((smalltalk.SourceArea || SourceArea),"_new",[]);
-$1=smalltalk.send(html,"_div",[]);
-smalltalk.send($1,"_class_",["section center"]);
-$2=smalltalk.send($1,"_with_",[(function(){
-smalltalk.send(smalltalk.send(html,"_h1",[]),"_with_",["Give Jtalk a try!"]);
-smalltalk.send(workspace,"_renderOn_",[html]);
-return smalltalk.send(smalltalk.send(html,"_div",[]),"_with_",[(function(){
-$3=smalltalk.send(html,"_button",[]);
-smalltalk.send($3,"_with_",["DoIt"]);
-$4=smalltalk.send($3,"_onClick_",[(function(){
-return smalltalk.send(workspace,"_doIt",[]);
+smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
+"First Name: ";
+return smalltalk.send(smalltalk.send(html,"_strong",[]),"_at_put_",["data-bind","text: firstName"]);
 })]);
-$4;
-$5=smalltalk.send(html,"_button",[]);
-smalltalk.send($5,"_with_",["PrintIt"]);
-$6=smalltalk.send($5,"_onClick_",[(function(){
-return smalltalk.send(workspace,"_printIt",[]);
+smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
+"Last Name: ";
+return smalltalk.send(smalltalk.send(html,"_strong",[]),"_at_put_",["data-bind","text: lastName"]);
 })]);
-$6;
-$7=smalltalk.send(html,"_button",[]);
-smalltalk.send($7,"_with_",["InspectIt"]);
-$8=smalltalk.send($7,"_onClick_",[(function(){
-return smalltalk.send(workspace,"_inspectIt",[]);
+smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
+"First Name: ";
+return smalltalk.send(smalltalk.send(html,"_input",[]),"_at_put_",["data-bind","text: firstName"]);
 })]);
-return $8;
+smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
+"Last Name: ";
+return smalltalk.send(smalltalk.send(html,"_input",[]),"_at_put_",["data-bind","text: lastName"]);
 })]);
-})]);
+smalltalk.send(smalltalk.send(html,"_button",[]),"_at_put_with_",["data-bind","click: capitalizeLastName","Go Caps"]);
 return self}
 }),
 smalltalk.KnockoutExample);

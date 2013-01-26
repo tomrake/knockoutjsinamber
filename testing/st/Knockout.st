@@ -24,21 +24,25 @@ Widget subclass: #KnockoutExample
 !KnockoutExample methodsFor: 'not yet classified'!
 
 renderOn: html
-	| workspace |
-	workspace := SourceArea new.
-	html div class: 'section center'; with: [
-		html h1 with: 'Give Jtalk a try!!'.
-		workspace renderOn: html.
-		html div with: [
-			html button
-				with: 'DoIt';
-				onClick: [workspace doIt].
-			html button
-				with: 'PrintIt';
-				onClick: [workspace printIt].
-			html button
-				with: 'InspectIt';
-				onClick: [workspace inspectIt]]]
+	html p
+    	with: ['First Name: '.
+        	     html strong
+                 	at: 'data-bind' put: 'text: firstName'].
+    html p
+    	with: ['Last Name: '.
+        	     html strong
+                 	at: 'data-bind' put: 'text: lastName'].
+	html p
+    	with: ['First Name: '.
+        	     html input
+                 	at: 'data-bind' put: 'text: firstName'].
+    html p
+    	with: ['Last Name: '.
+        	     html input
+                 	at: 'data-bind' put: 'text: lastName'].
+    html button
+    	at: 'data-bind' put: 'click: capitalizeLastName'
+    	with:  'Go Caps'
 ! !
 
 !KnockoutExample class methodsFor: 'not yet classified'!
