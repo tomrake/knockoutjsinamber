@@ -31,12 +31,26 @@ $1=smalltalk.send(self,"_isLoaded",[]);
 if(smalltalk.assert($1)){
 smalltalk.send(callback,"_value",[]);
 } else {
+<<<<<<< HEAD
 $.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);;
+=======
+
+              var script = document.createElement("script");
+  script.src = "http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js";
+  script.type = "text/javascript";
+  document.getElementsByTagName("head")[0].appendChild(script);
+            ;
+>>>>>>> 4c23fcb66b001001a45c85da23d7e808c1142489
 ;
+smalltalk.send(callback,"_value",[]);
 };
 return self},
 args: ["callback"],
+<<<<<<< HEAD
 source: "load: callback\x0a\x09\x22Load knockoutjs and do callback when loaded\x22\x0a    self isLoaded \x0a    \x09ifTrue: [callback value]\x0a\x09\x09ifFalse: [<$.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);>]       ",
+=======
+source: "load: callback\x0a\x09\x22Load knockoutjs and do callback when loaded\x22\x0a    self isLoaded \x0a    \x09ifTrue:[callback value]\x0a\x09\x09ifFalse:[\x0a            <\x0a              var script = document.createElement(\x22script\x22);\x0a  script.src = \x22http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js\x22;\x0a  script.type = \x22text/javascript\x22;\x0a  document.getElementsByTagName(\x22head\x22)[0].appendChild(script);\x0a            >.\x0a            \x22Should spin here  (self isLoaded) whileFalse:[self sleep]\x22\x0a            callback value\x0a]",
+>>>>>>> 4c23fcb66b001001a45c85da23d7e808c1142489
 messageSends: ["ifTrue:ifFalse:", "value", "isLoaded"],
 referencedClasses: []
 }),

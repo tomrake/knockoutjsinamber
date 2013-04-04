@@ -25,8 +25,18 @@ $1=smalltalk.send(self,"_isLoaded",[]);
 if(smalltalk.assert($1)){
 smalltalk.send(callback,"_value",[]);
 } else {
+<<<<<<< HEAD
 $.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);;
+=======
+
+              var script = document.createElement("script");
+  script.src = "http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js";
+  script.type = "text/javascript";
+  document.getElementsByTagName("head")[0].appendChild(script);
+            ;
+>>>>>>> 4c23fcb66b001001a45c85da23d7e808c1142489
 ;
+smalltalk.send(callback,"_value",[]);
 };
 return self}
 }),

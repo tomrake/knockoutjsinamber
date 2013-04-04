@@ -13,6 +13,7 @@ isLoaded
 load: callback
 	"Load knockoutjs and do callback when loaded"
     self isLoaded 
+<<<<<<< HEAD
     	ifTrue: [callback value]
 		ifFalse: [<$.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);>]
 ! !
@@ -46,5 +47,18 @@ loadScriptUrl: url callback: callback
 		script onload:[callback value]].
 	script src:url.
 	document body appendChild:script
+=======
+    	ifTrue:[callback value]
+		ifFalse:[
+            <
+              var script = document.createElement("script");
+  script.src = "http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js";
+  script.type = "text/javascript";
+  document.getElementsByTagName("head")[0].appendChild(script);
+            >.
+            "Should spin here  (self isLoaded) whileFalse:[self sleep]"
+            callback value
+]
+>>>>>>> 4c23fcb66b001001a45c85da23d7e808c1142489
 ! !
 
