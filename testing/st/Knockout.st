@@ -5,6 +5,18 @@ Object subclass: #Knockout
 
 !Knockout class methodsFor: 'not yet classified'!
 
+applyBindings: anObject
+	<return ko.applyBindings(anObject)>
+!
+
+computed: aBlock
+	<return ko.computed(aBlock)>
+!
+
+computed: aBlock with: anObject
+	<return ko.computed(aBlock,anObject)>
+!
+
 isLoaded
 "Test that the google.load() function is defined"
 ^<typeof(ko) !!== 'undefined'>
@@ -15,6 +27,10 @@ load: callback
     self isLoaded 
     	ifTrue: [callback value]
 		ifFalse: [self primitiveLoad:callback]
+!
+
+observable: aString
+	<return ko.observable(aString)>
 !
 
 primitiveLoad: callback
@@ -28,32 +44,80 @@ Widget subclass: #KnockoutExample
 
 !KnockoutExample methodsFor: 'not yet classified'!
 
+renderModelOn: html
+
+	Knockout applyBindings: (KnockoutExampleModel new firstName:'Bert';lastName:'Bertington';bindings)
+!
+
 renderOn: html
+    html p
+		with:[
+			html button onClick:[Browser openOn:Knockout];
+			with:'class browser'].
 	html p
-    	with: ['First Name: '.
+    	with: 'First Name: ';
+		with:[
         	     html strong
                  	at: 'data-bind' put: 'text: firstName'].
     html p
-    	with: ['Last Name: '.
-        	     html strong
+    	with: 'Last Name: ';
+        with: [	html strong
                  	at: 'data-bind' put: 'text: lastName'].
 	html p
-    	with: ['First Name: '.
+    	with: 'First Name: ';
+		with: [
         	     html input
                  	at: 'data-bind' put: 'text: firstName'].
     html p
-    	with: ['Last Name: '.
+    	with: 'Last Name: ';
+		with: [
         	     html input
                  	at: 'data-bind' put: 'text: lastName'].
+	html p
+		with: 'Full Name: ';
+		with: [
+				html strong
+					at:'data-bind' put: 'text: fullName'].
     html button
     	at: 'data-bind' put: 'click: capitalizeLastName';
-    	with:  'Go Caps'
+    	with:  'Go Caps'.
+	self renderModelOn: html
 ! !
 
 !KnockoutExample class methodsFor: 'not yet classified'!
 
 begin
-	self new appendToJQuery: 'body' asJQuery
+	Knockout load: [
+		self new appendToJQuery: 'body' asJQuery]
+! !
+
+Object subclass: #KnockoutExampleModel
+	instanceVariableNames: 'firstName lastName'
+	package: 'Knockout'!
+
+!KnockoutExampleModel methodsFor: 'not yet classified'!
+
+bindings
+	^#{'firstName' ->  self firstName: 'Bert'.
+	'lastName'-> self lastName: 'Berington'.
+	'capitalizeLastName' ->Knockout computed:[self lastName: self lastName value asUppercase].
+	'fullName' -> [self firstName , ' ',self lastName]}
+!
+
+firstName
+	^firstName ifNil:[firstName := Knockout observable:'']
+!
+
+firstName: aString
+	self firstName value:aString
+!
+
+lastName
+	^lastName ifNil:[lastName := Knockout observable:'']
+!
+
+lastName: aString
+	self lastName value:aString
 ! !
 
 Object subclass: #ScriptLoader
