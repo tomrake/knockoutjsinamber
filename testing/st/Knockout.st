@@ -1,4 +1,4 @@
-Smalltalk current createPackage: 'Knockout' properties: #{}!
+Smalltalk current createPackage: 'Knockout'!
 Object subclass: #Knockout
 	instanceVariableNames: ''
 	package: 'Knockout'!
@@ -14,7 +14,12 @@ load: callback
 	"Load knockoutjs and do callback when loaded"
     self isLoaded 
     	ifTrue: [callback value]
-		ifFalse: [<$.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);>]
+		ifFalse: [self primitiveLoad:callback]
+!
+
+primitiveLoad: callback
+	"Load knockoutjs and do callback when loaded"
+	<$.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);>
 ! !
 
 Widget subclass: #KnockoutExample
@@ -41,7 +46,7 @@ renderOn: html
         	     html input
                  	at: 'data-bind' put: 'text: lastName'].
     html button
-    	at: 'data-bind' put: 'click: capitalizeLastName'
+    	at: 'data-bind' put: 'click: capitalizeLastName';
     	with:  'Go Caps'
 ! !
 

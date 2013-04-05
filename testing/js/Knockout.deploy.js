@@ -1,4 +1,4 @@
-smalltalk.addPackage('Knockout', {});
+smalltalk.addPackage('Knockout');
 smalltalk.addClass('Knockout', smalltalk.Object, [], 'Knockout');
 
 smalltalk.addMethod(
@@ -10,8 +10,8 @@ fn: function () {
     var $1;
     $1 = typeof ko !== "undefined";
     return $1;
-}
-}),
+},
+messageSends: []}),
 smalltalk.Knockout.klass);
 
 smalltalk.addMethod(
@@ -20,16 +20,26 @@ smalltalk.method({
 selector: "load:",
 fn: function (callback){
 var self=this;
-var $1;
-$1=smalltalk.send(self,"_isLoaded",[]);
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._isLoaded();
 if(smalltalk.assert($1)){
-smalltalk.send(callback,"_value",[]);
+_st(callback)._value();
 } else {
-$.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);;
-;
+_st(self)._primitiveLoad_(callback);
 };
-return self}
-}),
+return self}, function($ctx1) {$ctx1.fill(self,"load:",{callback:callback},smalltalk.Knockout.klass)})},
+messageSends: ["ifTrue:ifFalse:", "value", "primitiveLoad:", "isLoaded"]}),
+smalltalk.Knockout.klass);
+
+smalltalk.addMethod(
+"_primitiveLoad_",
+smalltalk.method({
+selector: "primitiveLoad:",
+fn: function (callback){
+var self=this;
+return smalltalk.withContext(function($ctx1) { $.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);;
+return self}, function($ctx1) {$ctx1.fill(self,"primitiveLoad:",{callback:callback},smalltalk.Knockout.klass)})},
+messageSends: []}),
 smalltalk.Knockout.klass);
 
 
@@ -40,25 +50,28 @@ smalltalk.method({
 selector: "renderOn:",
 fn: function (html){
 var self=this;
-smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
-"First Name: ";
-return smalltalk.send(smalltalk.send(html,"_strong",[]),"_at_put_",["data-bind","text: firstName"]);
-})]);
-smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
-"Last Name: ";
-return smalltalk.send(smalltalk.send(html,"_strong",[]),"_at_put_",["data-bind","text: lastName"]);
-})]);
-smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
-"First Name: ";
-return smalltalk.send(smalltalk.send(html,"_input",[]),"_at_put_",["data-bind","text: firstName"]);
-})]);
-smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
-"Last Name: ";
-return smalltalk.send(smalltalk.send(html,"_input",[]),"_at_put_",["data-bind","text: lastName"]);
-})]);
-smalltalk.send(smalltalk.send(html,"_button",[]),"_at_put_with_",["data-bind","click: capitalizeLastName","Go Caps"]);
-return self}
-}),
+return smalltalk.withContext(function($ctx1) { var $1,$2;
+_st(_st(html)._p())._with_((function(){
+return smalltalk.withContext(function($ctx2) {"First Name: ";
+return _st(_st(html)._strong())._at_put_("data-bind","text: firstName");
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+_st(_st(html)._p())._with_((function(){
+return smalltalk.withContext(function($ctx2) {"Last Name: ";
+return _st(_st(html)._strong())._at_put_("data-bind","text: lastName");
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+_st(_st(html)._p())._with_((function(){
+return smalltalk.withContext(function($ctx2) {"First Name: ";
+return _st(_st(html)._input())._at_put_("data-bind","text: firstName");
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+_st(_st(html)._p())._with_((function(){
+return smalltalk.withContext(function($ctx2) {"Last Name: ";
+return _st(_st(html)._input())._at_put_("data-bind","text: lastName");
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+$1=_st(html)._button();
+_st($1)._at_put_("data-bind","click: capitalizeLastName");
+$2=_st($1)._with_("Go Caps");
+return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html},smalltalk.KnockoutExample)})},
+messageSends: ["with:", "at:put:", "strong", "p", "input", "button"]}),
 smalltalk.KnockoutExample);
 
 
@@ -69,8 +82,8 @@ selector: "begin",
 fn: function (){
 var self=this;
 smalltalk.send(smalltalk.send(self,"_new",[]),"_appendToJQuery_",[smalltalk.send("body","_asJQuery",[])]);
-return self}
-}),
+return self},
+messageSends: ["appendToJQuery:", "asJQuery", "new"]}),
 smalltalk.KnockoutExample.klass);
 
 
@@ -84,8 +97,8 @@ fn: function (url,callback){
 var self=this;
 $.getScript(url,callback);;
 ;
-return self}
-}),
+return self},
+messageSends: []}),
 smalltalk.ScriptLoader.klass);
 
 smalltalk.addMethod(
@@ -108,8 +121,8 @@ fn: function (url, callback) {
     smalltalk.send(script, "_src_", [url]);
     smalltalk.send(smalltalk.send(document, "_body", []), "_appendChild_", [script]);
     return self;
-}
-}),
+},
+messageSends: ["createElement:", "type:", "ifTrue:ifFalse:", "onreadystatechange:", "ifTrue:", "=", "onreadystatechange", "value", "or:", "readyState", "inspect", "onload:", "and:", "not", "hasOwnProperty:", "src:", "appendChild:", "body"]}),
 smalltalk.ScriptLoader.klass);
 
 

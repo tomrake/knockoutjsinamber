@@ -1,4 +1,4 @@
-smalltalk.addPackage('Knockout', {});
+smalltalk.addPackage('Knockout');
 smalltalk.addClass('Knockout', smalltalk.Object, [], 'Knockout');
 
 smalltalk.addMethod(
@@ -26,18 +26,33 @@ selector: "load:",
 category: 'not yet classified',
 fn: function (callback){
 var self=this;
-var $1;
-$1=smalltalk.send(self,"_isLoaded",[]);
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._isLoaded();
 if(smalltalk.assert($1)){
-smalltalk.send(callback,"_value",[]);
+_st(callback)._value();
 } else {
-$.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);;
-;
+_st(self)._primitiveLoad_(callback);
 };
-return self},
+return self}, function($ctx1) {$ctx1.fill(self,"load:",{callback:callback},smalltalk.Knockout.klass)})},
 args: ["callback"],
-source: "load: callback\x0a\x09\x22Load knockoutjs and do callback when loaded\x22\x0a    self isLoaded \x0a    \x09ifTrue: [callback value]\x0a\x09\x09ifFalse: [<$.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);>]       ",
-messageSends: ["ifTrue:ifFalse:", "value", "isLoaded"],
+source: "load: callback\x0a\x09\x22Load knockoutjs and do callback when loaded\x22\x0a    self isLoaded \x0a    \x09ifTrue: [callback value]\x0a\x09\x09ifFalse: [self primitiveLoad:callback]       ",
+messageSends: ["ifTrue:ifFalse:", "value", "primitiveLoad:", "isLoaded"],
+referencedClasses: []
+}),
+smalltalk.Knockout.klass);
+
+smalltalk.addMethod(
+"_primitiveLoad_",
+smalltalk.method({
+selector: "primitiveLoad:",
+category: 'not yet classified',
+fn: function (callback){
+var self=this;
+return smalltalk.withContext(function($ctx1) { $.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);;
+return self}, function($ctx1) {$ctx1.fill(self,"primitiveLoad:",{callback:callback},smalltalk.Knockout.klass)})},
+args: ["callback"],
+source: "primitiveLoad: callback\x0a\x09\x22Load knockoutjs and do callback when loaded\x22\x0a\x09<$.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);>      ",
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Knockout.klass);
@@ -51,27 +66,30 @@ selector: "renderOn:",
 category: 'not yet classified',
 fn: function (html){
 var self=this;
-smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
-"First Name: ";
-return smalltalk.send(smalltalk.send(html,"_strong",[]),"_at_put_",["data-bind","text: firstName"]);
-})]);
-smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
-"Last Name: ";
-return smalltalk.send(smalltalk.send(html,"_strong",[]),"_at_put_",["data-bind","text: lastName"]);
-})]);
-smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
-"First Name: ";
-return smalltalk.send(smalltalk.send(html,"_input",[]),"_at_put_",["data-bind","text: firstName"]);
-})]);
-smalltalk.send(smalltalk.send(html,"_p",[]),"_with_",[(function(){
-"Last Name: ";
-return smalltalk.send(smalltalk.send(html,"_input",[]),"_at_put_",["data-bind","text: lastName"]);
-})]);
-smalltalk.send(smalltalk.send(html,"_button",[]),"_at_put_with_",["data-bind","click: capitalizeLastName","Go Caps"]);
-return self},
+return smalltalk.withContext(function($ctx1) { var $1,$2;
+_st(_st(html)._p())._with_((function(){
+return smalltalk.withContext(function($ctx2) {"First Name: ";
+return _st(_st(html)._strong())._at_put_("data-bind","text: firstName");
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+_st(_st(html)._p())._with_((function(){
+return smalltalk.withContext(function($ctx2) {"Last Name: ";
+return _st(_st(html)._strong())._at_put_("data-bind","text: lastName");
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+_st(_st(html)._p())._with_((function(){
+return smalltalk.withContext(function($ctx2) {"First Name: ";
+return _st(_st(html)._input())._at_put_("data-bind","text: firstName");
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+_st(_st(html)._p())._with_((function(){
+return smalltalk.withContext(function($ctx2) {"Last Name: ";
+return _st(_st(html)._input())._at_put_("data-bind","text: lastName");
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+$1=_st(html)._button();
+_st($1)._at_put_("data-bind","click: capitalizeLastName");
+$2=_st($1)._with_("Go Caps");
+return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html},smalltalk.KnockoutExample)})},
 args: ["html"],
-source: "renderOn: html\x0a\x09html p\x0a    \x09with: ['First Name: '.\x0a        \x09     html strong\x0a                 \x09at: 'data-bind' put: 'text: firstName'].\x0a    html p\x0a    \x09with: ['Last Name: '.\x0a        \x09     html strong\x0a                 \x09at: 'data-bind' put: 'text: lastName'].\x0a\x09html p\x0a    \x09with: ['First Name: '.\x0a        \x09     html input\x0a                 \x09at: 'data-bind' put: 'text: firstName'].\x0a    html p\x0a    \x09with: ['Last Name: '.\x0a        \x09     html input\x0a                 \x09at: 'data-bind' put: 'text: lastName'].\x0a    html button\x0a    \x09at: 'data-bind' put: 'click: capitalizeLastName'\x0a    \x09with:  'Go Caps'\x0a\x0a        \x09   ",
-messageSends: ["with:", "at:put:", "strong", "p", "input", "at:put:with:", "button"],
+source: "renderOn: html\x0a\x09html p\x0a    \x09with: ['First Name: '.\x0a        \x09     html strong\x0a                 \x09at: 'data-bind' put: 'text: firstName'].\x0a    html p\x0a    \x09with: ['Last Name: '.\x0a        \x09     html strong\x0a                 \x09at: 'data-bind' put: 'text: lastName'].\x0a\x09html p\x0a    \x09with: ['First Name: '.\x0a        \x09     html input\x0a                 \x09at: 'data-bind' put: 'text: firstName'].\x0a    html p\x0a    \x09with: ['Last Name: '.\x0a        \x09     html input\x0a                 \x09at: 'data-bind' put: 'text: lastName'].\x0a    html button\x0a    \x09at: 'data-bind' put: 'click: capitalizeLastName';\x0a    \x09with:  'Go Caps'\x0a\x0a        \x09   ",
+messageSends: ["with:", "at:put:", "strong", "p", "input", "button"],
 referencedClasses: []
 }),
 smalltalk.KnockoutExample);
