@@ -5,6 +5,14 @@ Object subclass: #Knockout
 
 !Knockout class methodsFor: 'not yet classified'!
 
+applyBindings: anObject
+	<return ko.applyBindings(anObject)>
+!
+
+computed: aBlock with: anObject
+	<return ko.computed(aBlock,anObject)>
+!
+
 isLoaded
 "Test that the google.load() function is defined"
 ^<typeof(ko) !!== 'undefined'>
@@ -15,6 +23,10 @@ load: callback
     self isLoaded 
     	ifTrue: [callback value]
 		ifFalse: [self primitiveLoad:callback]
+!
+
+observable: aString
+	<return ko.observable(aString)>
 !
 
 primitiveLoad: callback
@@ -29,20 +41,27 @@ Widget subclass: #KnockoutExample
 !KnockoutExample methodsFor: 'not yet classified'!
 
 renderOn: html
+    html p
+		with:[
+			html button onClick:[Browser open];
+			with:'class browser'].
 	html p
-    	with: ['First Name: '.
+    	with: 'First Name: ';
+		with:[
         	     html strong
                  	at: 'data-bind' put: 'text: firstName'].
     html p
-    	with: ['Last Name: '.
-        	     html strong
+    	with: 'Last Name: ';
+        with: [	html strong
                  	at: 'data-bind' put: 'text: lastName'].
 	html p
-    	with: ['First Name: '.
+    	with: 'First Name: ';
+		with: [
         	     html input
                  	at: 'data-bind' put: 'text: firstName'].
     html p
-    	with: ['Last Name: '.
+    	with: 'Last Name: ';
+		with: [
         	     html input
                  	at: 'data-bind' put: 'text: lastName'].
     html button
@@ -53,7 +72,8 @@ renderOn: html
 !KnockoutExample class methodsFor: 'not yet classified'!
 
 begin
-	self new appendToJQuery: 'body' asJQuery
+	Knockout load: [
+		self new appendToJQuery: 'body' asJQuery]
 ! !
 
 Object subclass: #ScriptLoader
