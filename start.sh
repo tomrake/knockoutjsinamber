@@ -1,1 +1,1 @@
-node vendor/amber/server/server.js %*
+bower_components/amber/bin/amber serve %*
