@@ -1,0 +1,20 @@
+{
+  "name": "knockoutjsinamber",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tomrake/knockoutjsinamber",
+  "authors": [
+    "Thomas Rake <tom.rake@gmail.com>"
+  ],
+  "description": "Experimenting with knockoutjs in amber",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "amber": "master"
+  }
+}
