@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "amber": "master"
+    "amber": "master",
+    "knockoutjs": ">=3.0.0"
   }
 }
