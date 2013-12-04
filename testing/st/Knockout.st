@@ -9,7 +9,7 @@ applyBindings: anObject
 	<return ko.applyBindings(anObject)>
 !
 
-computed: aBlock
+computed: aBlock 
 	<return ko.computed(aBlock)>
 !
 
@@ -19,7 +19,7 @@ computed: aBlock with: anObject
 
 isLoaded
 "Test that the google.load() function is defined"
-^<typeof(ko) !!== 'undefined'>
+<return typeof(ko) !!== 'undefined'>
 !
 
 load: callback
@@ -35,7 +35,7 @@ observable: aString
 
 primitiveLoad: callback
 	"Load knockoutjs and do callback when loaded"
-	<$.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);>
+	<$.getScript('../bower_components/knockoutjs/build/output/knockout-latest.js',callback);>
 ! !
 
 Widget subclass: #KnockoutExample
@@ -44,15 +44,14 @@ Widget subclass: #KnockoutExample
 
 !KnockoutExample methodsFor: 'not yet classified'!
 
-renderModelOn: html
-
-	Knockout applyBindings: (KnockoutExampleModel new firstName:'Bert';lastName:'Bertington';bindings)
+initModel
+	Knockout applyBindings: #{'firstName' -> (Knockout observable:'Tom').'lastName' -> (Knockout observable:'Tom')}
 !
 
 renderOn: html
     html p
 		with:[
-			html button onClick:[Browser openOn:Knockout];
+			html button at: 'onclick' put:'require("amber/helpers").popupHelios()';
 			with:'class browser'].
 	html p
     	with: 'First Name: ';
@@ -73,51 +72,17 @@ renderOn: html
 		with: [
         	     html input
                  	at: 'data-bind' put: 'text: lastName'].
-	html p
-		with: 'Full Name: ';
-		with: [
-				html strong
-					at:'data-bind' put: 'text: fullName'].
     html button
     	at: 'data-bind' put: 'click: capitalizeLastName';
-    	with:  'Go Caps'.
-	self renderModelOn: html
+    	with:  'Go Caps'
 ! !
 
 !KnockoutExample class methodsFor: 'not yet classified'!
 
 begin
 	Knockout load: [
-		self new appendToJQuery: 'body' asJQuery]
-! !
-
-Object subclass: #KnockoutExampleModel
-	instanceVariableNames: 'firstName lastName'
-	package: 'Knockout'!
-
-!KnockoutExampleModel methodsFor: 'not yet classified'!
-
-bindings
-	^#{'firstName' ->  self firstName: 'Bert'.
-	'lastName'-> self lastName: 'Berington'.
-	'capitalizeLastName' ->Knockout computed:[self lastName: self lastName value asUppercase].
-	'fullName' -> [self firstName , ' ',self lastName]}
-!
-
-firstName
-	^firstName ifNil:[firstName := Knockout observable:'']
-!
-
-firstName: aString
-	self firstName value:aString
-!
-
-lastName
-	^lastName ifNil:[lastName := Knockout observable:'']
-!
-
-lastName: aString
-	self lastName value:aString
+		self new appendToJQuery: 'body' asJQuery;
+				initModel]
 ! !
 
 Object subclass: #ScriptLoader
