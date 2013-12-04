@@ -9,13 +9,17 @@ applyBindings: anObject
 	<return ko.applyBindings(anObject)>
 !
 
+computed: aBlock 
+	<return ko.computed(aBlock)>
+!
+
 computed: aBlock with: anObject
 	<return ko.computed(aBlock,anObject)>
 !
 
 isLoaded
 "Test that the google.load() function is defined"
-^<typeof(ko) !!== 'undefined'>
+<return typeof(ko) !!== 'undefined'>
 !
 
 load: callback
@@ -31,7 +35,7 @@ observable: aString
 
 primitiveLoad: callback
 	"Load knockoutjs and do callback when loaded"
-	<$.getScript('//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js',callback);>
+	<$.getScript('../bower_components/knockoutjs/build/output/knockout-latest.js',callback);>
 ! !
 
 Widget subclass: #KnockoutExample
@@ -39,6 +43,10 @@ Widget subclass: #KnockoutExample
 	package: 'Knockout'!
 
 !KnockoutExample methodsFor: 'not yet classified'!
+
+initModel
+	Knockout applyBindings: #{'firstName' -> (Knockout observable:'Tom').'lastName' -> (Knockout observable:'Tom')}
+!
 
 renderOn: html
     html p
@@ -73,7 +81,8 @@ renderOn: html
 
 begin
 	Knockout load: [
-		self new appendToJQuery: 'body' asJQuery]
+		self new appendToJQuery: 'body' asJQuery;
+				initModel]
 ! !
 
 Object subclass: #ScriptLoader
