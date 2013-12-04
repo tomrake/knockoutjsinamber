@@ -51,7 +51,7 @@ initModel
 renderOn: html
     html p
 		with:[
-			html button onClick:[Browser open];
+			html button at: 'onclick' put:'require("amber/helpers").popupHelios()';
 			with:'class browser'].
 	html p
     	with: 'First Name: ';

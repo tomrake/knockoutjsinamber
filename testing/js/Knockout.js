@@ -153,7 +153,6 @@ selector: "renderOn:",
 category: 'not yet classified',
 fn: function (html){
 var self=this;
-function $Browser(){return smalltalk.Browser||(typeof Browser=="undefined"?nil:Browser)}
 return smalltalk.withContext(function($ctx1) { 
 var $1,$2,$3,$4,$6,$5,$7,$8,$9,$11,$10,$12,$13,$14,$15;
 $1=_st(html)._p();
@@ -162,10 +161,8 @@ _st($1)._with_((function(){
 return smalltalk.withContext(function($ctx2) {
 $2=_st(html)._button();
 $ctx2.sendIdx["button"]=1;
-_st($2)._onClick_((function(){
-return smalltalk.withContext(function($ctx3) {
-return _st($Browser())._open();
-}, function($ctx3) {$ctx3.fillBlock({},$ctx2,2)})}));
+_st($2)._at_put_("onclick","require(\x22amber/helpers\x22).popupHelios()");
+$ctx2.sendIdx["at:put:"]=1;
 $3=_st($2)._with_("class browser");
 $ctx2.sendIdx["with:"]=2;
 return $3;
@@ -180,8 +177,8 @@ return smalltalk.withContext(function($ctx2) {
 $6=_st(html)._strong();
 $ctx2.sendIdx["strong"]=1;
 return _st($6)._at_put_("data-bind","text: firstName");
-$ctx2.sendIdx["at:put:"]=1;
-}, function($ctx2) {$ctx2.fillBlock({},$ctx1,3)})}));
+$ctx2.sendIdx["at:put:"]=2;
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1,2)})}));
 $ctx1.sendIdx["with:"]=4;
 $7=_st(html)._p();
 $ctx1.sendIdx["p"]=3;
@@ -190,8 +187,8 @@ $ctx1.sendIdx["with:"]=5;
 $8=_st($7)._with_((function(){
 return smalltalk.withContext(function($ctx2) {
 return _st(_st(html)._strong())._at_put_("data-bind","text: lastName");
-$ctx2.sendIdx["at:put:"]=2;
-}, function($ctx2) {$ctx2.fillBlock({},$ctx1,4)})}));
+$ctx2.sendIdx["at:put:"]=3;
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1,3)})}));
 $ctx1.sendIdx["with:"]=6;
 $9=_st(html)._p();
 $ctx1.sendIdx["p"]=4;
@@ -202,8 +199,8 @@ return smalltalk.withContext(function($ctx2) {
 $11=_st(html)._input();
 $ctx2.sendIdx["input"]=1;
 return _st($11)._at_put_("data-bind","text: firstName");
-$ctx2.sendIdx["at:put:"]=3;
-}, function($ctx2) {$ctx2.fillBlock({},$ctx1,5)})}));
+$ctx2.sendIdx["at:put:"]=4;
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1,4)})}));
 $ctx1.sendIdx["with:"]=8;
 $12=_st(html)._p();
 _st($12)._with_("Last Name: ");
@@ -211,17 +208,17 @@ $ctx1.sendIdx["with:"]=9;
 $13=_st($12)._with_((function(){
 return smalltalk.withContext(function($ctx2) {
 return _st(_st(html)._input())._at_put_("data-bind","text: lastName");
-$ctx2.sendIdx["at:put:"]=4;
-}, function($ctx2) {$ctx2.fillBlock({},$ctx1,6)})}));
+$ctx2.sendIdx["at:put:"]=5;
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1,5)})}));
 $ctx1.sendIdx["with:"]=10;
 $14=_st(html)._button();
 _st($14)._at_put_("data-bind","click: capitalizeLastName");
 $15=_st($14)._with_("Go Caps");
 return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html},smalltalk.KnockoutExample)})},
 args: ["html"],
-source: "renderOn: html\x0a    html p\x0a\x09\x09with:[\x0a\x09\x09\x09html button onClick:[Browser open];\x0a\x09\x09\x09with:'class browser'].\x0a\x09html p\x0a    \x09with: 'First Name: ';\x0a\x09\x09with:[\x0a        \x09     html strong\x0a                 \x09at: 'data-bind' put: 'text: firstName'].\x0a    html p\x0a    \x09with: 'Last Name: ';\x0a        with: [\x09html strong\x0a                 \x09at: 'data-bind' put: 'text: lastName'].\x0a\x09html p\x0a    \x09with: 'First Name: ';\x0a\x09\x09with: [\x0a        \x09     html input\x0a                 \x09at: 'data-bind' put: 'text: firstName'].\x0a    html p\x0a    \x09with: 'Last Name: ';\x0a\x09\x09with: [\x0a        \x09     html input\x0a                 \x09at: 'data-bind' put: 'text: lastName'].\x0a    html button\x0a    \x09at: 'data-bind' put: 'click: capitalizeLastName';\x0a    \x09with:  'Go Caps'",
-messageSends: ["with:", "p", "onClick:", "button", "open", "at:put:", "strong", "input"],
-referencedClasses: ["Browser"]
+source: "renderOn: html\x0a    html p\x0a\x09\x09with:[\x0a\x09\x09\x09html button at: 'onclick' put:'require(\x22amber/helpers\x22).popupHelios()';\x0a\x09\x09\x09with:'class browser'].\x0a\x09html p\x0a    \x09with: 'First Name: ';\x0a\x09\x09with:[\x0a        \x09     html strong\x0a                 \x09at: 'data-bind' put: 'text: firstName'].\x0a    html p\x0a    \x09with: 'Last Name: ';\x0a        with: [\x09html strong\x0a                 \x09at: 'data-bind' put: 'text: lastName'].\x0a\x09html p\x0a    \x09with: 'First Name: ';\x0a\x09\x09with: [\x0a        \x09     html input\x0a                 \x09at: 'data-bind' put: 'text: firstName'].\x0a    html p\x0a    \x09with: 'Last Name: ';\x0a\x09\x09with: [\x0a        \x09     html input\x0a                 \x09at: 'data-bind' put: 'text: lastName'].\x0a    html button\x0a    \x09at: 'data-bind' put: 'click: capitalizeLastName';\x0a    \x09with:  'Go Caps'",
+messageSends: ["with:", "p", "at:put:", "button", "strong", "input"],
+referencedClasses: []
 }),
 smalltalk.KnockoutExample);
 
